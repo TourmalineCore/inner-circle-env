@@ -65,5 +65,7 @@ devcontainer up --workspace-folder .
 devcontainer exec --workspace-folder . kind create cluster --name inner-circle --config kind-prod-config.yaml --kubeconfig ./.inner-circle-cluster-kubeconfig
 
 chmod -R 0777 ./.inner-circle-cluster-kubeconfig
- 
+
+devcontainer exec --workspace-folder . kind get kubeconfig --name inner-circle > kubeconfig
+
 sudo bash
