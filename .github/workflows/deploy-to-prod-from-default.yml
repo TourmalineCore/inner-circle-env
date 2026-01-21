@@ -1,0 +1,19 @@
+name: Deploy to Prod
+
+on:
+  push:
+    branches:
+      - master
+  
+jobs:
+  deploy-to-prod:
+    runs-on: self-hosted
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Deploy
+        run: |
+          helmfile cache cleanup && helmfile apply --suppress-diff --namespace  ${{ secrets.INNER_CIRCLE_PROD_NAMESPACE }} -f deploy/helmfile.yaml > /dev/null
+        env:
+          INNER_CIRCLE_PROD_LETS_ENCRYPT_EMAIL: ${{ secrets.INNER_CIRCLE_PROD_LETS_ENCRYPT_EMAIL }}
