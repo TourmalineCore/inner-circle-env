@@ -16,5 +16,6 @@ controller:
       https: "30443"
   config:
     # Critical level needed for UI redirect in configuration snippet annotation
+    # This is needed to enable redirects currently for books-ui case with QR codes where we have a short cut host name that needs to be redirected to the full regular hostname
     annotations-risk-level: Critical
     allow-snippet-annotations: true
