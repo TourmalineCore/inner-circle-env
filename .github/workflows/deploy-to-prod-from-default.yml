@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master
-      - feature/add_annotations
   
 jobs:
   deploy-to-prod:
