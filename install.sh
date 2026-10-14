@@ -66,6 +66,8 @@ devcontainer exec --workspace-folder . kind create cluster --name inner-circle -
 
 chmod -R 0777 ./.inner-circle-cluster-kubeconfig
 
-devcontainer exec --workspace-folder . kind get kubeconfig --name inner-circle > kubeconfig
+devcontainer exec --workspace-folder . kind get kubeconfig --name inner-circle > .inner-circle-cluster-external-kubeconfig
+
+sed -i "0,/0.0.0.0:6443/s//localhost:6443/" .inner-circle-cluster-external-kubeconfig
 
 sudo bash
